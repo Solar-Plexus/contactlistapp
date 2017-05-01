@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+  <title>To Do List</title>
+</head>
+<body>
+  <div class="container" ng-controller="AppCtrl">
+    <h1>To Do List</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>         
+          <th>Text</th>
+          <th>Due</th>
+          <th>Status</th>
+          <th>Action</th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input class="form-control" ng-model="todo.title"></td>
+          <td><input class="form-control" ng-model="todo.text"></td>
+          <td><input class="form-control" ng-model="todo.due"></td>
+          <td><input class="form-control" ng-model="todo.status"></td>
+          <td><button class="btn btn-primary" ng-click="addItem()">Add Item</button></td>
+          <td><button class="btn btn-info" ng-click="update()">Update</button></td>
+          <td><button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+        </tr>
+        <tr ng-repeat="todo in todolist">
+          <td>{{todo.title}}</td>
+          <td>{{todo.text}}</td>
+          <td>{{todo.due}}</td>
+          <td>{{todo.status}}</td>
+          <td><button class="btn btn-danger" ng-click="remove(todo._id)">Remove</button></td>
+          <td><button class="btn btn-warning" ng-click="edit(todo._id)">Edit</button></td>
+          <td><button class="btn btn-success" ng-click="finish(todo._id)">Complete</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+<script src="controllers/controller.js"></script>
+</body>
+</html>
